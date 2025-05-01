@@ -1,0 +1,226 @@
+/* VARIABLES */
+:root {
+    --dark-color: rgb(2, 4, 8);
+    --dark-hover: rgba(255, 255, 255, 0.1);
+
+    --light-color: rgb(100, 100, 128);
+    --light-hover: rgba(0, 0, 0, 0.1);
+}
+
+/* GENERAL */
+body {
+    width: 100%;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: monospace, sans-serif;
+    font-size: 0.5rem;
+    transition: background-color 0.3s;
+}
+
+body.light-mode {
+    color: var(--dark-color);
+    background-color: var(--light-color)
+}
+
+body.light-mode #toggle-mode-btn:hover {
+    background-color: var(--light-hover);
+}
+
+body.dark-mode {
+    color: var(--light-color);
+    background-color: var(--dark-color);
+}
+
+body.dark-mode #toggle-mode-btn:hover {
+    background-color: var(--dark-hover);
+}
+
+a {
+    text-decoration: none;
+    color: var(--dark-color);
+}
+
+input {
+    display: none;
+}
+
+/* MAIN */
+#toggle-mode-btn {
+    width: 2rem;
+    height: 2rem;
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: transparent;
+    transition: background-color 0.3s;
+    cursor: pointer;
+}
+
+
+
+/* FLIP BOOK */
+#flip_book {
+    width: 298px;
+    height: 420px;
+    position: relative;
+    transition-duration: 1s;
+    perspective: 2000px;
+}
+
+.front_cover,
+.back_cover {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2.5px 5px 5px 2.5px;
+    background-image: url(./assets/images/r1.svg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: rgb(0, 20, 60);
+    box-shadow: 0 0 5px 0 rgb(25, 25, 25, 0.25);
+}
+
+.front_cover {
+    position: absolute;
+    cursor: pointer;
+    transform-origin: center left;
+    transition: transform 0.5s;
+    background-color: rgb(0, 20, 60);
+    background-image: url(./assets/images/r1.svg);
+    z-index: 99;
+}
+
+.front_cover label {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    cursor: pointer;
+}
+
+.page {
+    width: 288px;
+    height: 400px;
+    position: absolute;
+    top: 10px;
+    left: 1px;
+    border-radius: 0 5px 5px 0;
+    background-color: gray;
+    transform-origin: left;
+    transform-style: preserve-3d;
+    transform: rotateY(0deg);
+    transition-duration: 0.5s;
+}
+
+.front_page {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+}
+
+.front_page label {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    cursor: pointer;
+    z-index: 100;
+}
+
+.back_page {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    transform: rotateY(180deg);
+    z-index: 100;
+}
+
+.back_page label {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    cursor: pointer;
+    z-index: 100;
+}
+
+
+.front_content {
+    width: 287px;
+    height: 398px;
+    position: absolute;
+    top: 1px;
+    border-radius: 0 5px 5px 0;
+    z-index: 97;
+}
+
+.back_content {
+    width: 287px;
+    height: 398px;
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    border-radius: 5px 0 0 5px;
+    z-index: 97;
+}
+
+.back_cover {
+    position: relative;
+    z-index: -1;
+}
+
+
+
+#cover_checkbox:checked~#flip_book {
+    transform: translateX(144px)
+}
+
+#cover_checkbox:checked~#flip_book .front_cover {
+    transform: rotateY(-180deg);
+    transition: transform 1.5s, z-index 0.5s 0.5s;
+    z-index: 1;
+}
+
+#cover_checkbox:checked~#flip_book #cover {
+    width: 80%;
+    height: 80%;
+    position: absolute;
+}
+
+#page1_checkbox:checked~#flip_book #page1 {
+    transform: rotateY(-180deg);
+    z-index: 3;
+}
+
+#page2_checkbox:checked~#flip_book #page2 {
+    transform: rotateY(-180deg);
+    z-index: 4;
+}
+
+#page3_checkbox:checked~#flip_book #page3 {
+    transform: rotateY(-180deg);
+    z-index: 5;
+}
+
+#page4_checkbox:checked~#flip_book #page4 {
+    transform: rotateY(-180deg);
+    z-index: 6;
+}
+
+#page5_checkbox:checked~#flip_book #page5 {
+    transform: rotateY(-180deg);
+    z-index: 9;
+}

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=6.0">
+    <title>Flip Book</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="./style1.css">
+</head>
+
+<body>
+    <main>
+        <input type="checkbox" id="cover_checkbox">
+        <input type="checkbox" id="page1_checkbox">
+        <input type="checkbox" id="page2_checkbox">
+        <input type="checkbox" id="page3_checkbox">
+        <input type="checkbox" id="page4_checkbox">
+        <input type="checkbox" id="page5_checkbox">
+
+        <!-- Flip Book -->
+        <div id="flip_book">
+            <div class="front_cover">
+                <label for="cover_checkbox" id="cover"></label>
+            </div>
+
+            <div class="page" id="page1">
+                <div class="front_page">
+                    <label for="page1_checkbox"></label>
+
+                    <img class="front_content" src="./assets/images/pages/rysunek.svg" alt="Front content">
+                </div>
+
+                <div class="back_page">
+                    <label for="page1_checkbox"></label>
+
+                    <img class="back_content" src="./assets/images/pages/r1.svg" alt="Back content">
+                </div>
+            </div>
+
+            <div class="page" id="page2">
+                <div class="front_page">
+                    <label for="page2_checkbox"></label>
+
+                    <img class="front_content" src="./assets/images/pages/r2.svg" alt="Front content">
+                </div>
+
+                <div class="back_page">
+                    <label for="page2_checkbox"></label>
+
+                    <img class="back_content" src="./assets/images/pages/r2.svg" alt="Back content">
+                </div>
+            </div>
+
+            <div class="page" id="page3">
+                <div class="front_page">
+                    <label for="page3_checkbox"></label>
+
+                    <img class="front_content" src="./assets/images/pages/r2.svg" alt="Front content">
+                </div>
+
+                <div class="back_page">
+                    <label for="page3_checkbox"></label>
+
+                    <img class="back_content" src="./assets/images/pages/r2.svg" alt="Back content">
+                </div>
+            </div>
+
+            <div class="page" id="page4">
+                <div class="front_page">
+                    <label for="page4_checkbox"></label>
+
+                    <img class="front_content" src="./assets/images/pages/r2.svg.webp" alt="Front content">
+                </div>
+
+                <div class="back_page">
+                    <label for="page4_checkbox"></label>
+
+                    <img class="back_content" src="./assets/images/pages/r2.svg" alt="Back content">
+                </div>
+            </div>
+
+            <div class="page" id="page5">
+                <div class="front_page">
+                    <label for="page5_checkbox"></label>
+
+                    <img class="front_content" src="./assets/images/pages/r2.svg" alt="Front content">
+                </div>
+
+                <div class="back_page">
+                    <label for="page5_checkbox"></label>
+                </div>
+            </div>
+
+            <div class="back_cover"></div>
+        </div>
+    </main>
+</body>
+</html>
