@@ -1,0 +1,73 @@
+body {
+  background-color: #008;
+  color:white;
+}
+
+h1 {
+  font-family: "Cinzel";
+  text-align: center;
+}
+#flipbook-container {
+  position: relative;
+  width: 40vw;
+  height: 80vh;
+  margin-left: 40vw;
+}
+
+
+ /* The flip box container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
+.flip-box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  width: 600px;;
+  height: 900px;
+  border: 0px solid #00000000;
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+  margin-left:16em;
+}
+
+/* This container is needed to position the front and back side */
+.flip-box-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 2s;
+  transform-style: preserve-3d;
+  transform-origin: left;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+
+
+.flip-box.active .flip-box-inner {
+  transform: rotateY(-180deg);
+  transform-origin: left;
+}
+
+/* Position the front and back side */
+.flip-box-front, .flip-box-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+
+}
+
+/* Style the front side (fallback if image is missing) */
+.flip-box-front {
+  background-color: transparent;
+  color: black;
+
+}
+
+/* Style the back side */
+.flip-box-back {
+   background-color: transparent;
+   transform: rotateY(-180deg);
+
+
+}
