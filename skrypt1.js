@@ -1,9 +1,13 @@
-let nr=1
-let nr_max=8;//liczba stron
-let z_index =0;//inicjalizacja z-indeksu
+let nr = 1;
+let nr_max = 8; // liczba stron
 
-// obsługa kółka myszy: od siebie - wstecz; do siebie - naprzód:
+// Inicjalizacja z-index dla wszystkich stron na początku
+for (let i = 1; i <= nr_max; i++) {
+    const flipBox = document.getElementById("flip" + i);
+    if (flipBox) flipBox.style.zIndex = (nr_max + 1) - i;
+}
 
+// Obsługa kółka myszy: od siebie - wstecz; do siebie - naprzód:
 document.addEventListener("wheel", function(event) {
     if (event.deltaY > 0) {
         przesunNaprzod();
@@ -13,68 +17,45 @@ document.addEventListener("wheel", function(event) {
 });
 
 document.addEventListener('keydown', (event) => {
-      switch (event.key) {
-
+    switch (event.key) {
         case 'ArrowLeft':
-          przesunWstecz();
-          break;
+            przesunWstecz();
+            break;
         case 'ArrowRight':
-          przesunNaprzod();
-          break;
-      }
+            przesunNaprzod();
+            break;
+    }
 });
 
-function przesunNaprzod(){
-if (nr<nr_max)
-  {
-  obrot();
-  nr+=1;
+function przesunNaprzod() {
+    if (nr < nr_max) {
+        obrot();
+        nr += 1;
+    }
+    document.getElementById("komunikat").innerText = "rozkładówka " + nr + " z " + nr_max;
+}
 
-  };
-document.getElementById("komunikat").innerText = "rozkładówka "+nr+" z "+nr_max;
-
-};
-
-function przesunWstecz(){
-if (nr>1)
- {
-  nr-=1;
-  obrot_wstecz();
-
-  };
-document.getElementById("komunikat").innerHTML = "rozkładówka "+nr+" z "+nr_max;
-
-};
+function przesunWstecz() {
+    if (nr > 1) {
+        nr -= 1;
+        obrot_wstecz();
+    }
+    document.getElementById("komunikat").innerText = "rozkładówka " + nr + " z " + nr_max;
+}
 
 function obrot() {
-
-  const flipBox = document.getElementById("flip"+nr);
-
-
-  flipBox.classList.toggle('active');
- z_index=document.getElementById("flip"+nr).style.zIndex;
- //document.getElementById("demo2").innerText = "z-index przed obrotem:"+z_index
- document.getElementById("flip"+nr).style.zIndex =-z_index;
- //document.getElementById("demo3").innerText = "z-index po obrocie:"+document.getElementById("flip"+nr).style.zIndex;
-
+    const flipBox = document.getElementById("flip" + nr);
+    flipBox.classList.toggle('active');
+    // Strona przewrócona ma niższy z-index
+    flipBox.style.zIndex = nr;
 }
 
 function obrot_wstecz() {
-
-  const flipBox = document.getElementById("flip"+nr);
-   z_index=document.getElementById("flip"+nr).style.zIndex;
-   document.getElementById("flip"+nr).style.zIndex =99;
-  flipBox.classList.toggle('active');
-
-   //document.getElementById("demo2").innerText = "z-index przed obrotem:"+z_index;
-  document.getElementById("flip"+nr).style.zIndex = -z_index;
-  //document.getElementById("demo3").innerText = "z-index po obrocie:"+document.getElementById("flip"+nr).style.zIndex;
-
-
-
-
-
+    const flipBox = document.getElementById("flip" + nr);
+    flipBox.classList.toggle('active');
+    // Strona cofnięta ma wyższy z-index
+    flipBox.style.zIndex = (nr_max + 1) - nr;
 }
 
-// Obracanie automatyczne co 5 sekund
-//setInterval(obrot, 1000);
+// Jeśli chcesz, możesz automatycznie przewracać strony (odkomentuj poniższą linię)
+// setInterval(obrot, 5000);
