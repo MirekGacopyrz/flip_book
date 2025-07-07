@@ -47,7 +47,7 @@ function obrot() {
     const flipBox = document.getElementById("flip" + nr);
     flipBox.classList.toggle('active');
     // Strona przewrócona ma niższy z-index
-    flipBox.style.zIndex = nr;
+    flipBox.style.zIndex = nr-1;
 }
 
 function obrot_wstecz() {
